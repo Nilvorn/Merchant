@@ -1,11 +1,14 @@
+import math
 
-Royale = {
+
+
+PortRoyale = {
     "Name" : "Port Royale",
     "Description" :
     "Once the richest city in the Caribbean, now half-sunken but still active in trade."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (1,2)
 
 }
 
@@ -16,7 +19,7 @@ Nassau = {
     "A free port in the Bahamas that thrives on smuggling and outlaw trade."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (3,4)
 
 }
 
@@ -75,6 +78,33 @@ SantoDomingo = {
 }
 
 def getAllPorts():
-    allPorts = Royale, Nassau, Tortuga, Kingston, Havana, SanJuan, SantoDomingo
+    allPorts = PortRoyale, Nassau, Tortuga, Kingston, Havana, SanJuan, SantoDomingo
     return allPorts
 
+def getStartPort():
+    startPort = PortRoyale
+    return PortRoyale
+
+def findDistanceBetweenPorts(PortA,PortB):
+    PortAX, PortAY = PortA["Location"]
+    PortBX, PortBY = PortB["Location"]
+
+    totalX = PortAX - PortBX
+    totalY = PortAY - PortBY
+
+    distance = math.sqrt(math.pow(totalX, 2) + math.pow(totalY, 2))
+
+def getAllPortDistancesFromPort(currentPort):
+    portDistances = []
+
+    for port in getAllPorts():
+        if (port["Name"] == currentPort["Name"]):
+            continue;
+        distance = findDistanceBetweenPorts(currentPort, port)
+
+        portDistance = {
+            "Port" : port,
+            "Distance" : distance
+        }
+        portDistances.append(portDistances)
+    return portDistances

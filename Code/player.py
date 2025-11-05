@@ -1,7 +1,7 @@
 class Player:
     shipname = "Unnamed Ship"
 
-    currentlocation = ""
+    currentlocation = " "
 
     gold = 50
 

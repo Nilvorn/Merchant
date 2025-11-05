@@ -1,11 +1,19 @@
-from map import getAllPorts
+from map import getAllPorts,getStartPort
 from player import Player
-
-print ("Welcome to Merchant")
-
+player = Player()
 allPorts = getAllPorts()
+startPort = getStartPort()
 
-print("### Ports:")
+print ("Welcome to the high seas Merchant")
+
+print ("Please select the name of your mighty vessel.")
+
+player.shipname = input("> ")
+
+print ("The valiant vessel " + player.shipname + " is currently docked at " + startPort['Name'] + ".")
+
+
+print("Ports:")
 for port in allPorts:
     print("- " + port["Name"])
 
