@@ -30,7 +30,7 @@ Tortuga = {
     "A small pirate-controlled island known for black market trade."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (2,5)
 
 }
 
@@ -41,7 +41,7 @@ Kingston = {
     "The largest British trade port in Jamaica and a center for sugar exports."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (5,8)
 
 }
 
@@ -52,7 +52,7 @@ Havana = {
     "Spains greatest port and the hub of its treasure fleets."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (3,7)
 
 
 }
@@ -62,7 +62,7 @@ SanJuan = {
     "A fortified port in Puerto Rico known for steady commerce and naval presence."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (5,6)
 
 }
 
@@ -73,7 +73,7 @@ SantoDomingo = {
     "An older, quieter Spanish port where smaller traders thrive away from the empires’ eyes."
     "YearFounded: 1655",
     "Population" : 25000,
-    "Location" : ()
+    "Location" : (6,6)
 
 }
 
@@ -86,6 +86,9 @@ def getStartPort():
     return PortRoyale
 
 def findDistanceBetweenPorts(PortA,PortB):
+    if (PortA == PortB):
+        return 0
+
     PortAX, PortAY = PortA["Location"]
     PortBX, PortBY = PortB["Location"]
 
@@ -93,6 +96,8 @@ def findDistanceBetweenPorts(PortA,PortB):
     totalY = PortAY - PortBY
 
     distance = math.sqrt(math.pow(totalX, 2) + math.pow(totalY, 2))
+
+    return distance
 
 def getAllPortDistancesFromPort(currentPort):
     portDistances = []

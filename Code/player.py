@@ -1,11 +1,16 @@
+from map import *
 class Player:
-    shipname = "Unnamed Ship"
+    def __init__(self, startingPort):
+        self.shipName = "Unnamed Ship"
 
-    currentlocation = " "
+        self.currentLocation = startingPort
 
-    gold = 50
+        self.gold = 50
 
-    shipRange = 12
+        self.shipRange = 5
 
-    ShipCargoSpace = 5
+        self.shipCargoSpace = 5
+
+    def isPortWithingRange(self, destinationPort):
+        return findDistanceBetweenPorts(self.currentLocation, destinationPort) < self.shipRange
     
