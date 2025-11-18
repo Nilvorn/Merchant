@@ -1,4 +1,4 @@
-from map import getAllPorts,getStartPort
+from map import *
 from player import Player
 
 allPorts = getAllPorts()
@@ -13,13 +13,13 @@ player.shipname = "HMS bob"
 
 print ("The valiant vessel " + player.shipname + " is currently docked at " + startPort['Name'] + ".")
 
-# print("Ports:")
-# for port in allPorts:
-#     withinRange = player.isPortWithingRange(port)
-#     if (withinRange):
-#         print("- Is " + port["Name"] + " in range? " + str(withinRange)
+print("Ports:")
+for port in allPorts:
+     withinRange = player.isPortWithingRange(port)
+     if (withinRange):
+         print("- Is " + port["Name"] + " in range? " + str(withinRange))
 
-getPortToTravelUI()
+
 
 def getPortToTravelUI():
 
@@ -36,14 +36,12 @@ def getPortToTravelUI():
     
     if (portToTravelTo == 'No port'):
         print("Can you read a map Captain?")
-        return portToTravelTo = False
+        return portToTravelTo == False
 
-    if travelToPort == False(withinRange):
+    if portToTravelTo == False(withinRange):
         print("We can't make it there captain.")
     else:
         print("We are off captain.")
-    if travelToPort == False(withinRange):
 
 
-
-input("\nThe program has finished. Press any key to exit.");
+#input("\nThe program has finished. Press any key to exit.");
