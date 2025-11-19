@@ -5,8 +5,8 @@ import math
 PortRoyale = {
     "Name" : "Port Royale",
     "Description" :
-    "Once the richest city in the Caribbean, now half-sunken but still active in trade."
-    "YearFounded: 1655",
+    "Once the richest city in the Caribbean, now half-sunken but still active in trade.",
+    "YearFounded" : 1655,
     "Population" : 25000,
     "Location" : (1,2)
 
