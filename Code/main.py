@@ -1,5 +1,6 @@
 from map import *
-from player import Player
+from player import *
+from cargo import *
 import os
 
 allPorts = getAllPorts()
@@ -10,7 +11,7 @@ print ("Welcome to the high seas Merchant")
 
 # print ("Please select the name of your mighty vessel.")
 # player.shipname = input("> ")
-player.shipname = "HMS bob"
+player.shipname = "HMS Bob"
 
 print ("The valiant vessel " + player.shipname + " is currently docked at " + startPort['Name'] + ".")
 
@@ -69,5 +70,38 @@ def sailingUI():
     input("...")
 
 currentPortUI()
+
+def mainUI():
+    while True:
+        os.system("cls")
+        print("The vessel " + player.shipName + " is currently docked at " + player.currentLocation["Name"] + " harbour" ".\n")
+        print("Captain, what are your orders?\n")
+        print("1. Disembark the ship and visit the current port.")
+        print("2. Sail out to another port")
+        print("3. Quit game\n")
+
+        playerInput = input("> ")
+        if (playerInput == "3"):
+            return
+        elif (playerInput == "1"):
+            currentPortUI()
+        elif (playerInput == "2"):
+            portToTravelTo = getPortToTravelUI()
+            if (portToTravelTo == -1):
+                continue
+            player.currentLocation = portToTravelTo
+            sailingUI()
+
+mainUI()
+
+# def holdUI():
+#     os.system("cls")
+#     print("- Cargo Hold -\n")
+#     print("You have " + str(player.shipCargoSpace) + " total cargo space.")
+#     print("You are currently using " + str(usedCargoSpace) + " of it.\n")
+#     print("Cargo Inventory:\n")
+#     for cargoName in player.shipCargoInventory:
+#         print(cargoName + " : " + str(player.shipCargoInventory[cargoName]))
+#     input("\n(Press any key to continue...)")
 
 input("\nThe program has finished. Press any key to exit.")
