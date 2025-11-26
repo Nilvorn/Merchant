@@ -2,7 +2,6 @@ class Cargo:
     name = "Unnamed Cargo"
     basePrice = 0
 
-
 rum = Cargo()
 rum.name = "Rum"
 rum.basePrice = 10

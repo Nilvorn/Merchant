@@ -1,3 +1,4 @@
+from prettytable import PrettyTable
 from map import *
 from player import *
 from cargo import *
@@ -56,6 +57,13 @@ def getPortToTravelUI():
 #         break
 # print("Going to : " + str(portToTravelTo))
 
+def leavePortUI():
+    portToTravelTo = getPortToTravelUI()
+    if (portToTravelTo == -1):
+        return
+    player.currentLocation = portToTravelTo
+    sailingUI()
+
 def currentPortUI():
     os.system("cls")
     print("- " + player.currentLocation["Name"] + "  -\n")
@@ -67,7 +75,29 @@ def currentPortUI():
 def sailingUI():
     os.system("cls")
     print("Traveling...")
-    input("...")
+    input("Press any key to arrive at port...")
+
+def holdUI():
+    os.system("cls")
+    table = PrettyTable()
+    table.field_names = ["Name", "No."]
+    # TODO: Loop over all player cargo types
+    # Something like: for cargo in allPlayerCargo:
+    # Then call table.addRow
+    table.add_row(["Rum",0])
+    table.add_row(["Spices",0])
+    table.add_row(["Black Powder",0])
+    table.add_row(["Pistols",0])
+    table.add_row(["Muskets",0])
+    table.add_row(["Sugar",0])
+    table.add_row(["Cannon Ball",0])
+    table.add_row(["Tobacco",0])
+    table.add_row(["Grain",0])
+
+    print("--HOLD--")
+    print("Capacity: " + str(player.shipCargoSpace))
+    print(table)
+    input("\n(Press any key to return.)")
 
 currentPortUI()
 
@@ -77,31 +107,20 @@ def mainUI():
         print("The vessel " + player.shipName + " is currently docked at " + player.currentLocation["Name"] + " harbour" ".\n")
         print("Captain, what are your orders?\n")
         print("1. Disembark the ship and visit the current port.")
-        print("2. Sail out to another port")
-        print("3. Quit game\n")
+        print("2. Sail out to another port.")
+        print("3. See what is in the hold.")
+        print("4. Quit game\n")
 
         playerInput = input("> ")
-        if (playerInput == "3"):
-            return
+        if (playerInput == "4"):
+            continue
         elif (playerInput == "1"):
             currentPortUI()
         elif (playerInput == "2"):
-            portToTravelTo = getPortToTravelUI()
-            if (portToTravelTo == -1):
-                continue
-            player.currentLocation = portToTravelTo
-            sailingUI()
+            leavePortUI()
+        elif (playerInput == "3"):
+            holdUI()
 
 mainUI()
-
-# def holdUI():
-#     os.system("cls")
-#     print("- Cargo Hold -\n")
-#     print("You have " + str(player.shipCargoSpace) + " total cargo space.")
-#     print("You are currently using " + str(usedCargoSpace) + " of it.\n")
-#     print("Cargo Inventory:\n")
-#     for cargoName in player.shipCargoInventory:
-#         print(cargoName + " : " + str(player.shipCargoInventory[cargoName]))
-#     input("\n(Press any key to continue...)")
 
 input("\nThe program has finished. Press any key to exit.")
